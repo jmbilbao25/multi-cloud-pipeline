@@ -54,10 +54,16 @@ pipeline {
         sshagent(credentials: ['web-server-ssh-key']) {
           sh '''
             echo "=== Deploying to AWS Web Server 1 ==="
-            scp -o StrictHostKeyChecking=no *.html ubuntu@$WEB_SERVER_1:/var/www/html/
+            scp -o StrictHostKeyChecking=no *.html ubuntu@$WEB_SERVER_1:/home/ubuntu/
+            ssh -o StrictHostKeyChecking=no ubuntu@$WEB_SERVER_1 'sudo cp /home/ubuntu/*.html /var/www/html/'
             
             echo "=== Deploying to AWS Web Server 2 ==="
-            scp -o StrictHostKeyChecking=no *.html ubuntu@$WEB_SERVER_2:/var/www/html/
+            scp -o StrictHostKeyChecking=no *.html ubuntu@$WEB_SERVER_2:/home/ubuntu/
+            ssh -o StrictHostKeyChecking=no ubuntu@$WEB_SERVER_2 'sudo cp /home/ubuntu/*.html /var/www/html/'
+          '''
+        }
+      }
+    }
           '''
         }
       }
