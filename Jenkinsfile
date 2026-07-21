@@ -4,9 +4,9 @@ pipeline {
   environment {
     AZ_ACCOUNT   = 'pocstore9194'
     AZ_SHARE     = 'webcontent'
-    STAGING_URL  = 'http://<YOUR-STAGING-URL>.azurecontainer.io'
-    WEB_SERVER_1 = '<PRIVATE-IP-OF-WEB-SERVER-1>'
-    WEB_SERVER_2 = '<PRIVATE-IP-OF-WEB-SERVER-2>'
+    STAGING_URL  = 'http://poc-nginx-9194.eastus.azurecontainer.io'
+    WEB_SERVER_1 = '10.0.3.51'
+    WEB_SERVER_2 = '10.0.4.175'
   }
 
   stages {
